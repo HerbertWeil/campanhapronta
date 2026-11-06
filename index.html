@@ -117,12 +117,13 @@ footer p{margin:0 0 4px}
     <img src="logo.png" alt="Campanha Pronta" class="mx-auto h-40 sm:h-44 w-auto mb-1 onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
     <span class="wordmark">Campanha Pronta</span>
   </header>
-
+  
+<id="intro">
     <p style="margin-left: 30px; margin-right: 30px; text-align: justify;">Se você está com o <strong>prazo explodindo</strong> para fazer posts pra sua rede social, chegou no lugar certo. O Campanha Pronta é um serviço exclusivo que permite que você tenha em mãos até <strong>30 publicações prontas em apenas 24 horas</strong>.</p> 
     <p style="margin-left: 30px; margin-right: 30px; text-align: justify;">Tudo o que você precisa fazer é preencher o breve formulário abaixo e clicar em enviar.</p>
     <p style="margin-left: 30px; margin-right: 30px; text-align: justify;"><strong>O pagamento é somente depois de você receber e aprovar o material todo pronto</strong>.</p>
   </section>
-
+</id>
   <form id="form" class="card" novalidate>
     <div class="campo">
       <label for="insta">Instagram da empresa</label>
@@ -205,13 +206,22 @@ footer p{margin:0 0 4px}
 
   <section class="card intro" id="sucesso" hidden>
     <h2>Pedido enviado!</h2>
-    <p>Recebemos o seu pedido. Em breve entraremos em contato e o material chega no e-mail informado em até 24 horas.</p>
+    <p>Recebemos o seu pedido. O material chegará no e-mail informado em até 24 horas e em breve entraremos em contato.</p>
+    <p>Para fazer outro pedido clique abaixo.</p>
   </section>
 </div>
 
+  <section class="card intro" id="sucesso" hidden>
+  <h2>Pedido enviado!</h2>
+  <p>Recebemos o seu pedido. Em breve entraremos em contato e o material chega no e-mail informado em até 24 horas.</p>
+
+  <!-- NOVO: botão que só aparece junto com a confirmação -->
+  <button type="button" class="btn" id="btnNovoPedido" style="margin-top:22px">Fazer outro pedido</button>
+</section>
+
 <footer>
-  <p><strong>Campanha Pronta - Produto Exclusivo da Agência Meu Norte Digital</strong></p>
-  <p>Avenida Major Amarante, 2320, Centro, Vilhena - RO, CEP 76.980-232 - CNPJ 44.076.710/0001-70</p>
+  <p><strong>® Campanha Pronta - Produto exclusivo da Agência Meu Norte Digital LTDA.</strong></p>
+  <p>Av. Major Amarante, 2320, Centro, Vilhena (RO), CEP 76.980-232 - CNPJ 44.076.710/0001-70</p>
   <p>@meunorti</p>
 </footer>
 
@@ -309,11 +319,17 @@ form.addEventListener('submit',async ev=>{
   btn.disabled=true; btn.textContent='Enviando…';
   try{
     await fetch(ENDPOINT,{method:'POST',mode:'no-cors',headers:{'Content-Type':'text/plain;charset=utf-8'},body:JSON.stringify(dados)});
-    form.hidden=true; $('sucesso').hidden=false; $('sucesso').scrollIntoView({behavior:'smooth'});
+    form.hidden=true; $('intro').hidden=true; $('sucesso').hidden=false; window.scrollTo({top:0,behavior:'smooth'});
   }catch(err){
     btn.disabled=false; btn.textContent='Enviar pedido!';
     st.className='erro'; st.textContent='Não foi possível enviar agora. Verifique sua conexão e tente de novo.';
   }
+});
+  // Volta ao início com o formulário limpo para um novo pedido
+document.getElementById('btnNovoPedido').addEventListener('click', () => {
+  document.getElementById('form').reset();
+  window.scrollTo(0, 0);
+  location.reload();
 });
 </script>
 </body>
