@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Campanha Pronta – Meu Norte Digital</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@500;600&family=Montserrat:wght@400;500;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --preto:#0b0b0c; --chumbo:#1c1d20; --chumbo2:#2a2b30;
+  --laranja:#ff6a00; --ambar:#ffb300; --texto:#f2efe9; --suave:#b9b4aa;
+  --script:'Montserrat','Montserrat';
+  --sans:'Montserrat','Helvetica Neue',Arial,sans-serif;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0; font-family:var(--sans); color:var(--texto); line-height:1.55;
+  background:
+    radial-gradient(ellipse 70% 40% at 50% -5%, rgba(255,255,255,.14), transparent 70%),
+    radial-gradient(circle at 85% 30%, rgba(255,106,0,.16), transparent 45%),
+    radial-gradient(circle at 10% 75%, rgba(255,179,0,.10), transparent 40%),
+    url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='220' height='220'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 .07 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>"),
+    linear-gradient(180deg,var(--chumbo) 0%,var(--preto) 60%);
+  min-height:100vh; position:relative; overflow-x:hidden;
+}
+/* círculo recortado de fundo */
+body::before{
+  content:""; position:absolute; width:min(900px,160vw); aspect-ratio:1; border-radius:50%;
+  top:120px; left:50%; transform:translateX(-50%);
+  border:2px solid rgba(255,179,0,.14);
+  background:radial-gradient(circle, rgba(255,106,0,.10), transparent 65%);
+  pointer-events:none; z-index:0;
+}
+.wrap{position:relative; z-index:1; max-width:680px; margin:0 auto; padding:32px 18px 0}
+header{text-align:center; margin-bottom:26px}
+header img{max-width:220px; max-height:130px; height:auto}
+.wordmark{display:none; font-weight:800; font-size:2rem; letter-spacing:.04em;
+  background:linear-gradient(90deg,var(--ambar),var(--laranja)); -webkit-background-clip:text; background-clip:text; color:transparent}
+
+.card{
+  background:linear-gradient(160deg,rgba(42,43,48,.92),rgba(24,25,28,.94));
+  border:1px solid rgba(255,179,0,.28); border-radius:28px 8px 28px 8px;
+  padding:26px 24px; margin-bottom:22px;
+  box-shadow:0 18px 50px rgba(0,0,0,.55), 0 0 40px rgba(255,106,0,.08);
+}
+.intro p{font-family:var(--script); font-size:1rem; font-weight:200; line-height:1.5; margin:0 0 .8em; color:#f7f1e6}
+.intro p:last-child{margin:0}
+
+.campo{margin-bottom:24px}
+.campo>label,.campo>.titulo{display:block; font-weight:700; font-size:1rem; margin-bottom:9px; color:#fff}
+.dica{font-weight:400; font-size:.82rem; color:var(--suave); display:block; margin-top:2px}
+input[type=text],input[type=email],input[type=tel],input[type=number],select,textarea{
+  width:100%; font:inherit; font-size:1rem; color:var(--texto);
+  background:rgba(11,11,12,.7); border:1.5px solid var(--chumbo2); border-radius:12px; padding:12px 14px;
+}
+textarea{resize:vertical}
+select{appearance:none;
+  background-image:linear-gradient(45deg,transparent 50%,var(--ambar) 50%),linear-gradient(135deg,var(--ambar) 50%,transparent 50%);
+  background-position:calc(100% - 20px) 50%,calc(100% - 14px) 50%; background-size:6px 6px; background-repeat:no-repeat; padding-right:38px}
+select option{background:var(--chumbo)}
+input:focus,select:focus,textarea:focus{outline:none; border-color:var(--laranja); box-shadow:0 0 0 3px rgba(255,106,0,.28)}
+input:user-invalid,select:user-invalid,textarea:user-invalid{border-color:#ff5252}
+.opcoes{display:flex; flex-wrap:wrap; gap:10px}
+.opcoes label{display:flex; align-items:center; gap:9px; cursor:pointer; font-weight:500;
+  background:rgba(11,11,12,.7); border:1.5px solid var(--chumbo2); border-radius:12px; padding:11px 16px}
+.opcoes label:has(input:checked){border-color:var(--laranja); background:rgba(255,106,0,.14)}
+.opcoes label:has(input:focus-visible){box-shadow:0 0 0 3px rgba(255,106,0,.35)}
+input[type=checkbox],input[type=radio]{accent-color:var(--laranja); width:18px; height:18px; margin:0}
+.sub{margin-top:12px; padding-left:14px; border-left:3px solid var(--laranja)}
+.sub[hidden]{display:none}
+.sub .item{margin-bottom:12px}
+.sub .item span{display:block; font-weight:700; font-size:.88rem; color:var(--ambar); margin-bottom:5px}
+
+.btn{
+  display:block; width:100%; border:0; cursor:pointer; font:inherit; font-weight:800; font-size:1.1rem;
+  color:#150a00; padding:16px 22px; border-radius:999px;
+  background:linear-gradient(90deg,var(--ambar),var(--laranja));
+  box-shadow:0 10px 28px rgba(255,106,0,.35); transition:transform .15s, box-shadow .15s;
+}
+.btn:hover{transform:translateY(-2px); box-shadow:0 14px 34px rgba(255,106,0,.5)}
+.btn:focus-visible{outline:3px solid #fff; outline-offset:3px}
+.btn:disabled{opacity:.6; cursor:wait; transform:none}
+
+#orcamento{text-align:center; border-color:var(--laranja)}
+#orcamento[hidden]{display:none}
+#orcamento .resumo{color:var(--suave); font-size:.95rem; margin:0}
+#orcamento .valor{font-weight:800; font-size:clamp(2.4rem,9vw,3.4rem); line-height:1.1; margin:6px 0 14px;
+  background:linear-gradient(90deg,var(--ambar),var(--laranja)); -webkit-background-clip:text; background-clip:text; color:transparent}
+#orcamento ul{list-style:none; margin:0 0 4px; padding:0; font-weight:500}
+#orcamento li{padding:3px 0}
+#orcamento li:last-child{font-weight:700; color:var(--ambar)}
+.lembrete{text-align:center; font-family:var(--script); font-size:1.25rem; margin:14px 0 0; color:#f7f1e6}
+#status{text-align:center; font-weight:600; margin-top:14px; min-height:1.2em}
+#status.erro{color:#ff7b7b}
+#sucesso{text-align:center}
+#sucesso[hidden]{display:none}
+#sucesso h2{font-family:var(--script); font-size:2rem; margin:0 0 8px; color:var(--ambar)}
+
+footer{
+  position:relative; z-index:1; margin-top:48px; padding:44px 18px 28px; text-align:center;
+  background:linear-gradient(100deg,var(--laranja),var(--ambar));
+  border-radius:50% 50% 0 0 / 38px 38px 0 0; color:#1a0d00; font-size:.74rem; line-height:1.6;
+}
+footer strong{font-weight:800}
+footer p{margin:0 0 4px}
+@media (max-width:480px){.card{padding:22px 18px}.intro p{font-size:1.28rem}}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <!-- Troque "logo.png" pelo arquivo (ou URL) da logo do Campanha Pronta -->
+    <img src="logo.png" alt="Campanha Pronta" class="mx-auto h-40 sm:h-44 w-auto mb-1 onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
+    <span class="wordmark">Campanha Pronta</span>
+  </header>
+
+    <p style="margin-left: 30px; margin-right: 30px; text-align: justify;">Se você está com o <strong>prazo explodindo</strong> para fazer posts pra sua rede social, chegou no lugar certo. O Campanha Pronta é um serviço exclusivo que permite que você tenha em mãos até <strong>30 publicações prontas em apenas 24 horas</strong>.</p> 
+    <p style="margin-left: 30px; margin-right: 30px; text-align: justify;">Tudo o que você precisa fazer é preencher o breve formulário abaixo e clicar em enviar.</p>
+    <p style="margin-left: 30px; margin-right: 30px; text-align: justify;"><strong>O pagamento é somente depois de você receber e aprovar o material todo pronto</strong>.</p>
+  </section>
+
+  <form id="form" class="card" novalidate>
+    <div class="campo">
+      <label for="insta">Instagram da empresa</label>
+      <input type="text" id="insta" name="insta" placeholder="@suaempresa" pattern="@?[A-Za-z0-9._]{1,30}" autocomplete="off" required>
+    </div>
+
+    <div class="campo">
+      <label for="qtd">Quantidade de posts</label>
+      <select id="qtd" name="qtd" required><option value="">Selecione…</option></select>
+    </div>
+
+    <div class="campo">
+      <span class="titulo">Carrossel ou post estático?<span class="dica">Marque uma opção ou as duas.</span></span>
+      <div class="opcoes">
+        <label><input type="checkbox" id="tEst" value="Estático"> Post estático</label>
+        <label><input type="checkbox" id="tCar" value="Carrossel"> Carrossel</label>
+      </div>
+      <div class="sub" id="splitBox" hidden>
+        <label for="nCar" class="titulo" style="font-size:.9rem">Quantos dos posts serão carrossel? <span class="dica">O restante será post estático.</span></label>
+        <input type="number" id="nCar" min="1" step="1" inputmode="numeric">
+      </div>
+    </div>
+
+    <div class="campo">
+      <span class="titulo">Para o design dos posts, usar as cores da logo?</span>
+      <div class="opcoes">
+        <label><input type="radio" name="cores" value="Sim" required> Sim</label>
+        <label><input type="radio" name="cores" value="Não"> Não</label>
+      </div>
+      <div class="sub" id="coresBox" hidden>
+        <label for="coresTxt" class="titulo" style="font-size:.9rem">Quais cores você deseja?</label>
+        <textarea id="coresTxt" rows="2" placeholder="Ex.: azul-marinho, branco e dourado"></textarea>
+      </div>
+    </div>
+
+    <div class="campo">
+      <span class="titulo">Deseja descrever o que vai em cada post?</span>
+      <div class="opcoes">
+        <label><input type="radio" name="desc" value="Sim" required> Sim</label>
+        <label><input type="radio" name="desc" value="Não"> Não</label>
+      </div>
+      <div class="sub" id="descSim" hidden></div>
+      <div class="sub" id="descNao" hidden>
+        <label for="descTxt" class="titulo" style="font-size:.9rem">Descreva o estilo e as informações gerais que você deseja</label>
+        <textarea id="descTxt" rows="4" placeholder="Ex.: estilo moderno e próximo do público, divulgando promoções, serviços e depoimentos"></textarea>
+      </div>
+    </div>
+
+    <div class="campo">
+      <label for="email">E-mail<span class="dica">A entrega do material será por aqui.</span></label>
+      <input type="email" id="email" name="email" autocomplete="email" required>
+    </div>
+
+    <div class="campo">
+      <label for="zap">WhatsApp<span class="dica">Para contato em caso de dúvidas.</span></label>
+      <input type="tel" id="zap" name="zap" placeholder="(69) 99999-9999" pattern="\(\d{2}\) \d{4,5}-\d{4}" autocomplete="tel" required>
+    </div>
+
+    <div class="campo">
+      <label for="obs">Observações adicionais</label>
+      <textarea id="obs" name="obs" placeholder="Opcional" 9999" rows="3" ></textarea>
+    </div>
+
+    <button type="button" class="btn" id="btnOrc">Gerar orçamento</button>
+
+    <div class="card" id="orcamento" hidden style="margin:24px 0 0">
+      <p class="resumo" id="resumo"></p>
+      <p class="valor" id="valor"></p>
+      <ul>
+        <li>Parcele em até 12x no cartão</li>
+        <li>Pagamento à vista -5%</li>
+        <li>Você paga só depois de receber e aprovar o material!</li>
+      </ul>
+      <button type="submit" class="btn" id="btnEnviar" style="margin-top:20px">Enviar pedido!</button>
+    </div>
+
+    <p class="lembrete">Lembre-se: O pagamento é somente depois de você receber e aprovar o material.</p>
+    <div id="status" role="status" aria-live="polite"></div>
+  </form>
+
+  <section class="card intro" id="sucesso" hidden>
+    <h2>Pedido enviado!</h2>
+    <p>Recebemos o seu pedido. Em breve entraremos em contato e o material chega no e-mail informado em até 24 horas.</p>
+  </section>
+</div>
+
+<footer>
+  <p><strong>Campanha Pronta - Produto Exclusivo da Agência Meu Norte Digital</strong></p>
+  <p>Avenida Major Amarante, 2320, Centro, Vilhena - RO, CEP 76.980-232 - CNPJ 44.076.710/0001-70</p>
+  <p>@meunorti</p>
+</footer>
+
+<script>
+/* ====== CONFIGURAÇÃO ======
+   Cole aqui a URL do app da web gerada no Google Apps Script (termina em /exec) */
+const ENDPOINT = 'https://script.google.com/macros/s/AKfycbyYRw1VAVOFOt-yR99FldKU7MRqPE9HMbyyUZj6unTeFpgnafNBRkzq9G_9tbI8Mp7HmQ/exec';
+
+/* Tabela de valores (R$) para 1 a 30 posts – não é exibida ao cliente */
+const EST=[50,98,144,188,230,270,308,344,378,410,440,468,494,520,546,572,598,624,650,678,708,738,768,800,832,864,896,928,960,990];
+const CAR=[100,196,288,376,460,540,616,688,756,820,878,932,982,1028,1070,1108,1144,1178,1210,1240,1268,1296,1324,1352,1380,1408,1432,1454,1474,1490];
+
+const $=id=>document.getElementById(id);
+const form=$('form'), qtd=$('qtd'), tEst=$('tEst'), tCar=$('tCar'), nCar=$('nCar');
+const brl=v=>v.toLocaleString('pt-BR',{style:'currency',currency:'BRL'});
+let valorOrcado=null;
+
+for(let i=1;i<=30;i++) qtd.add(new Option(i+(i===1?' post':' posts'),i));
+
+function mostrar(box,on,...campos){ box.hidden=!on; campos.forEach(c=>{c.disabled=!on; c.required=on;}); }
+const radio=n=>(form.querySelector('input[name='+n+']:checked')||{}).value;
+
+function atualizaTipo(){
+  const n=+qtd.value, ambos=tEst.checked&&tCar.checked&&n>1;
+  mostrar($('splitBox'),ambos,nCar);
+  nCar.max=Math.max(n-1,1);
+  tEst.setCustomValidity(tEst.checked||tCar.checked?'':'Selecione ao menos uma opção.');
+  if(tEst.checked&&tCar.checked&&n===1){ tCar.checked=false; } // 1 post = um único tipo
+}
+function atualizaDesc(){
+  const sim=radio('desc')==='Sim', n=+qtd.value;
+  const box=$('descSim'), antigos=[...box.querySelectorAll('textarea')].map(t=>t.value);
+  box.innerHTML='';
+  if(sim&&n){
+    for(let i=1;i<=n;i++){
+      const d=document.createElement('div'); d.className='item';
+      d.innerHTML='<span>Post '+i+'</span><textarea rows="3" required placeholder="O que vai neste post?"></textarea>';
+      d.querySelector('textarea').value=antigos[i-1]||''; box.appendChild(d);
+    }
+  }
+  box.hidden=!(sim&&n);
+  mostrar($('descNao'),radio('desc')==='Não',$('descTxt'));
+}
+function atualizaCores(){ mostrar($('coresBox'),radio('cores')==='Não',$('coresTxt')); }
+
+[tEst,tCar].forEach(c=>c.addEventListener('change',atualizaTipo));
+qtd.addEventListener('change',()=>{atualizaTipo();atualizaDesc();});
+form.querySelectorAll('input[name=desc]').forEach(r=>r.addEventListener('change',atualizaDesc));
+form.querySelectorAll('input[name=cores]').forEach(r=>r.addEventListener('change',atualizaCores));
+atualizaTipo(); atualizaCores(); mostrar($('descNao'),false,$('descTxt')); mostrar($('splitBox'),false,nCar);
+
+$('zap').addEventListener('input',e=>{
+  const d=e.target.value.replace(/\D/g,'').slice(0,11); let o=d;
+  if(d.length>2) o='('+d.slice(0,2)+') '+d.slice(2,d.length>10?7:6)+(d.length>(d.length>10?7:6)?'-'+d.slice(d.length>10?7:6):'');
+  e.target.value=o;
+});
+
+function calcula(){
+  const n=+qtd.value, ambos=tEst.checked&&tCar.checked;
+  let c=0,e=0;
+  if(ambos){ c=+nCar.value; e=n-c; } else if(tCar.checked){ c=n; } else { e=n; }
+  const total=(e?EST[e-1]:0)+(c?CAR[c-1]:0);
+  const tipo=ambos?c+' carrossel + '+e+' estático':(c?'carrossel':'post estático');
+  return {total,c,e,tipo};
+}
+
+$('btnOrc').addEventListener('click',()=>{
+  if(!form.reportValidity()) return;
+  const r=calcula(); valorOrcado=r.total;
+  $('resumo').textContent=qtd.value+(qtd.value==='1'?' post':' posts')+' · '+r.tipo;
+  $('valor').textContent=brl(r.total);
+  $('orcamento').hidden=false;
+  $('orcamento').scrollIntoView({behavior:'smooth',block:'center'});
+});
+
+// qualquer alteração depois do orçamento exige gerar de novo
+form.addEventListener('input',e=>{ if(valorOrcado!==null && !$('orcamento').contains(e.target)){ valorOrcado=null; $('orcamento').hidden=true; } });
+form.addEventListener('change',e=>{ if(valorOrcado!==null && !$('orcamento').contains(e.target)){ valorOrcado=null; $('orcamento').hidden=true; } });
+
+form.addEventListener('submit',async ev=>{
+  ev.preventDefault();
+  const st=$('status'), btn=$('btnEnviar'); st.className=''; st.textContent='';
+  if(valorOrcado===null||!form.reportValidity()){ st.className='erro'; st.textContent='Clique em “Gerar orçamento” antes de enviar.'; return; }
+  if(!ENDPOINT.startsWith('https://')){ st.className='erro'; st.textContent='Envio não configurado: cole a URL do Apps Script no código da página.'; return; }
+  const r=calcula(), temDesc=radio('desc')==='Sim';
+  const insta=$('insta').value.trim().replace(/^@/,'');
+  const dados={
+    instagram:'@'+insta, quantidade:+qtd.value, tipo:r.tipo, qtdCarrossel:r.c, qtdEstatico:r.e,
+    coresLogo:radio('cores'), coresDesejadas:radio('cores')==='Não'?$('coresTxt').value.trim():'',
+    descreveCadaPost:radio('desc'),
+    descricaoPosts:temDesc?[...$('descSim').querySelectorAll('textarea')].map((t,i)=>'Post '+(i+1)+': '+t.value.trim()).join('\n'):'',
+    descricaoGeral:temDesc?'':$('descTxt').value.trim(),
+    email:$('email').value.trim(), whatsapp:$('zap').value, observacoes:$('obs').value.trim(), valor:r.total
+  };
+  btn.disabled=true; btn.textContent='Enviando…';
+  try{
+    await fetch(ENDPOINT,{method:'POST',mode:'no-cors',headers:{'Content-Type':'text/plain;charset=utf-8'},body:JSON.stringify(dados)});
+    form.hidden=true; $('sucesso').hidden=false; $('sucesso').scrollIntoView({behavior:'smooth'});
+  }catch(err){
+    btn.disabled=false; btn.textContent='Enviar pedido!';
+    st.className='erro'; st.textContent='Não foi possível enviar agora. Verifique sua conexão e tente de novo.';
+  }
+});
+</script>
+</body>
+</html>
