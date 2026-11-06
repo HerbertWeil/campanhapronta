@@ -98,6 +98,8 @@ input[type=checkbox],input[type=radio]{accent-color:var(--laranja); width:18px; 
 #sucesso{text-align:center}
 #sucesso[hidden]{display:none}
 #sucesso h2{font-family:var(--script); font-size:2rem; margin:0 0 8px; color:var(--ambar)}
+#sucesso{max-width:644px; width:calc(100% - 36px); margin:0 auto 22px}
+#sucesso .btn{width:100%}
 
 footer{
   position:relative; z-index:1; margin-top:48px; padding:44px 18px 28px; text-align:center;
@@ -205,17 +207,15 @@ footer p{margin:0 0 4px}
 
     </form>
 
+    </form>
+
   <section class="card intro" id="sucesso" hidden>
     <h2>Pedido enviado!</h2>
     <p>Recebemos o seu pedido. O material chegará no e-mail informado em até 24 horas e em breve entraremos em contato.</p>
     <p>Para fazer outro pedido clique abaixo.</p>
     <button type="button" class="btn" id="btnNovoPedido" style="margin-top:22px">Fazer outro pedido</button>
   </section>
-</div>
-  
-  <!-- NOVO: botão que só aparece junto com a confirmação -->
-  <button type="button" class="btn" id="btnNovoPedido" style="margin-top:22px">Fazer outro pedido</button>
-</section>
+</div>   <!-- este </div> fecha o .wrap -->
 
 <footer>
   <p><strong>® Campanha Pronta - Produto exclusivo da Agência Meu Norte Digital LTDA.</strong></p>
