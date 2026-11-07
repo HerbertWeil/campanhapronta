@@ -118,6 +118,501 @@ footer p{margin:0 0 4px}
     <!-- Troque "logo.png" pelo arquivo (ou URL) da logo do Campanha Pronta -->
     <img src="logo.png" alt="Campanha Pronta" class="mx-auto h-40 sm:h-44 w-auto mb-1 onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
     <span class="wordmark">Campanha Pronta</span>
+    <!-- ===== BLOCO DE VENDAS – Campanha Pronta =====
+     Cole TUDO (style + div) logo depois do </header> e antes do formulário. -->
+<style>
+.vd{--o:var(--laranja,#ff6a00);--a:var(--ambar,#ffb300);--c2:var(--chumbo2,#2a2b30);--t:var(--texto,#f2efe9);--s:var(--suave,#b9b4aa);
+  font-family:var(--sans,'Montserrat','Helvetica Neue',Arial,sans-serif);color:var(--t);margin:0 0 10px}
+.vd *{box-sizing:border-box}
+.vd section{margin:0 0 50px;text-align:center}
+.vd h1,.vd h2,.vd h3{margin:0;color:#fff;font-weight:800}
+.vd h1{font-size:clamp(1.7rem,6.6vw,2.4rem);line-height:1.15;margin-bottom:16px}
+.vd h2{font-size:clamp(1.45rem,5.4vw,1.95rem);line-height:1.2;margin-bottom:14px}
+.vd h3{font-size:1.05rem;line-height:1.3}
+.vd .hl{background:linear-gradient(90deg,var(--a),var(--o));-webkit-background-clip:text;background-clip:text;color:transparent}
+.vd .sub{color:var(--s);font-size:1rem;margin:0 auto 20px;max-width:540px}
+.vd .script{font-family:var(--script,'Dancing Script',cursive);font-size:1.5rem;color:var(--a);margin:0 0 6px}
+.vd .nota{font-size:.82rem;color:var(--s);margin:12px 0 0}
+.vd-cta{display:inline-block;max-width:100%;padding:15px 32px;border-radius:999px;font-weight:800;font-size:1.05rem;text-decoration:none;
+  color:#150a00;background:linear-gradient(90deg,var(--a),var(--o));box-shadow:0 10px 30px rgba(255,106,0,.4);transition:transform .15s,box-shadow .15s}
+.vd-cta:hover{transform:translateY(-2px);box-shadow:0 14px 38px rgba(255,106,0,.55)}
+.vd-cta:focus-visible{outline:3px solid #fff;outline-offset:3px}
+.vd-card{background:linear-gradient(160deg,rgba(42,43,48,.92),rgba(24,25,28,.94));border:1px solid rgba(255,179,0,.25);
+  border-radius:24px 8px 24px 8px;padding:22px 20px;text-align:left;box-shadow:0 14px 40px rgba(0,0,0,.5)}
+
+/* hero */
+.vd-fone{width:min(250px,70%);margin:6px auto 22px;display:block;filter:drop-shadow(0 0 34px rgba(255,106,0,.4))}
+.vd-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:30px}
+.vd-stats div{background:rgba(11,11,12,.6);border:1px solid var(--c2);border-radius:16px;padding:14px 6px}
+.vd-stats b{display:block;font-size:1.7rem;font-weight:800;line-height:1.1}
+.vd-stats span{font-size:.78rem;color:var(--s)}
+
+/* personas */
+.vd-pers{display:grid;gap:16px;margin-top:22px}
+.vd-ic{width:46px;height:46px;border-radius:50%;display:grid;place-items:center;margin-bottom:10px;
+  background:linear-gradient(135deg,var(--a),var(--o))}
+.vd-ic svg{width:24px;height:24px;stroke:#150a00;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.vd-par{margin:14px 0 0;font-size:.93rem}
+.vd-par p{margin:0;padding:10px 12px;border-left:4px solid}
+.vd-par .dor{border-color:#ff5252;background:rgba(255,82,82,.07);border-radius:0 10px 0 0;color:#ffd6d6}
+.vd-par .sol{border-color:var(--a);background:rgba(255,179,0,.08);border-radius:0 0 10px 0}
+.vd-par b{color:#fff}
+
+/* comparação */
+.vd-comp{display:grid;gap:16px;margin:22px 0 28px}
+.vd-comp .vd-card{padding:20px 18px}
+.vd-comp h3{margin-bottom:12px;font-size:1.1rem}
+.vd-comp .ruim{border-color:rgba(255,82,82,.4)}
+.vd-comp .bom{border:1.5px solid var(--o);box-shadow:0 0 36px rgba(255,106,0,.22)}
+.vd-lista{list-style:none;margin:0;padding:0}
+.vd-lista li{position:relative;padding:7px 0 7px 34px;font-size:.93rem}
+.vd-lista li::before{position:absolute;left:0;top:6px;width:23px;height:23px;border-radius:50%;display:grid;place-items:center;font-size:.8rem;font-weight:800}
+.ruim .vd-lista li::before{content:"✕";background:rgba(255,82,82,.18);color:#ff6b6b}
+.bom .vd-lista li::before{content:"✓";background:linear-gradient(135deg,var(--a),var(--o));color:#150a00}
+
+/* passos */
+.vd-passos{display:grid;gap:14px;margin-top:22px;counter-reset:p}
+.vd-passos .vd-card{display:flex;gap:14px;align-items:flex-start;counter-increment:p}
+.vd-passos .vd-card::before{content:counter(p);flex:none;width:38px;height:38px;border-radius:50%;display:grid;place-items:center;
+  font-weight:800;color:#150a00;background:linear-gradient(135deg,var(--a),var(--o))}
+.vd-passos p{margin:4px 0 0;color:var(--s);font-size:.9rem}
+
+/* oferta */
+.vd-oferta{border:1.5px solid var(--o);text-align:center;padding:26px 20px;box-shadow:0 0 44px rgba(255,106,0,.25)}
+.vd-oferta .vd-lista{display:inline-block;text-align:left;margin:6px 0 20px}
+
+/* faq */
+.vd details{background:rgba(11,11,12,.6);border:1px solid var(--c2);border-radius:14px;margin-bottom:10px;text-align:left}
+.vd summary{cursor:pointer;font-weight:700;padding:14px 16px;list-style:none;position:relative;padding-right:40px}
+.vd summary::-webkit-details-marker{display:none}
+.vd summary::after{content:"+";position:absolute;right:16px;top:50%;transform:translateY(-50%);font-size:1.4rem;color:var(--a)}
+.vd details[open] summary::after{content:"–"}
+.vd details p{margin:0;padding:0 16px 16px;color:var(--s);font-size:.93rem}
+
+.vd-seta{display:block;margin:18px auto 0;width:30px;color:var(--a)}
+@media(min-width:620px){.vd-comp{grid-template-columns:1fr 1fr}}
+@media(max-width:420px){.vd-stats b{font-size:1.4rem}}
+</style>
+
+<div class="vd">
+
+  <!-- 1. HERO -->
+  <section>
+    <p class="script">Prazo explodindo?</p>
+    <h1>Até 30 posts prontos para o seu Instagram <span class="hl">em apenas 24 horas.</span></h1>
+    <p class="sub">Você preenche um formulário rápido, a gente cria o material com a sua identidade visual e entrega no seu e-mail. <strong>Só paga depois de aprovar.</strong></p>
+
+    <!-- Ilustração: celular com feed de posts -->
+    <svg class="vd-fone" viewBox="0 0 260 330" role="img" aria-label="Celular mostrando um feed de posts prontos com selo de 24 horas">
+      <defs>
+        <linearGradient id="vdg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ffb300"/><stop offset="1" stop-color="#ff6a00"/></linearGradient>
+        <linearGradient id="vdd" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#34353b"/><stop offset="1" stop-color="#1c1d20"/></linearGradient>
+      </defs>
+      <rect x="40" y="8" width="180" height="314" rx="28" fill="#0b0b0c" stroke="url(#vdg)" stroke-width="3"/>
+      <rect x="100" y="18" width="60" height="7" rx="3.5" fill="#2a2b30"/>
+      <circle cx="62" cy="48" r="11" fill="url(#vdg)"/><rect x="80" y="42" width="70" height="8" rx="4" fill="#3a3b41"/><rect x="80" y="54" width="44" height="6" rx="3" fill="#2a2b30"/>
+      <g>
+        <rect x="54" y="76" width="48" height="48" rx="7" fill="url(#vdg)"/>
+        <rect x="106" y="76" width="48" height="48" rx="7" fill="url(#vdd)" stroke="#ffb300" stroke-opacity=".5"/>
+        <rect x="158" y="76" width="48" height="48" rx="7" fill="#ff6a00" fill-opacity=".85"/>
+        <rect x="54" y="128" width="48" height="48" rx="7" fill="url(#vdd)" stroke="#ffb300" stroke-opacity=".5"/>
+        <rect x="106" y="128" width="48" height="48" rx="7" fill="url(#vdg)"/>
+        <rect x="158" y="128" width="48" height="48" rx="7" fill="url(#vdd)" stroke="#ffb300" stroke-opacity=".5"/>
+        <rect x="54" y="180" width="48" height="48" rx="7" fill="#ff6a00" fill-opacity=".85"/>
+        <rect x="106" y="180" width="48" height="48" rx="7" fill="url(#vdd)" stroke="#ffb300" stroke-opacity=".5"/>
+        <rect x="158" y="180" width="48" height="48" rx="7" fill="url(#vdg)"/>
+        <!-- ícone de carrossel -->
+        <rect x="186" y="82" width="14" height="14" rx="2" fill="none" stroke="#fff" stroke-width="2"/><rect x="183" y="85" width="14" height="14" rx="2" fill="none" stroke="#fff" stroke-width="2" opacity=".7"/>
+        <rect x="82" y="134" width="14" height="14" rx="2" fill="none" stroke="#ffb300" stroke-width="2"/><rect x="79" y="137" width="14" height="14" rx="2" fill="none" stroke="#ffb300" stroke-width="2" opacity=".7"/>
+      </g>
+      <rect x="54" y="244" width="152" height="9" rx="4.5" fill="#2a2b30"/><rect x="54" y="260" width="110" height="9" rx="4.5" fill="#2a2b30"/>
+      <rect x="54" y="284" width="152" height="26" rx="13" fill="url(#vdg)"/>
+      <!-- selo 24h -->
+      <circle cx="214" cy="64" r="34" fill="#0b0b0c" stroke="url(#vdg)" stroke-width="3"/>
+      <text x="214" y="64" text-anchor="middle" font-family="Montserrat,Arial,sans-serif" font-weight="800" font-size="22" fill="#ffb300">24h</text>
+      <text x="214" y="82" text-anchor="middle" font-family="Montserrat,Arial,sans-serif" font-weight="600" font-size="9" fill="#f2efe9">entrega</text>
+    </svg>
+
+    <a class="vd-cta" href="#form">Quero meus posts em 24 horas</a>
+    <p class="nota">Pagamento somente depois que você receber e aprovar o material.</p>
+
+    <div class="vd-stats">
+      <div><b class="hl">24h</b><span>para receber tudo pronto</span></div>
+      <div><b class="hl">30</b><span>posts por pedido</span></div>
+      <div><b class="hl">R$ 0</b><span>pagos antes de aprovar</span></div>
+    </div>
+  </section>
+
+  <!-- 2. DORES POR PERFIL -->
+  <section>
+    <h2>Seja qual for o seu papel, <span class="hl">o problema é o mesmo: falta tempo.</span></h2>
+    <p class="sub">Veja como o Campanha Pronta tira esse peso das suas costas.</p>
+
+    <div class="vd-pers">
+      <article class="vd-card">
+        <div class="vd-ic"><svg viewBox="0 0 24 24"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M9 7V5a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v2M3 13h18"/></svg></div>
+        <h3>Para quem é empresário</h3>
+        <div class="vd-par">
+          <p class="dor"><b>A dor:</b> “Sei que preciso postar sempre, mas não tenho tempo nem cabeça para criar conteúdo.”</p>
+          <p class="sol"><b>A solução:</b> você descreve o que quer em um formulário e recebe os posts prontos. O seu tempo volta para o que realmente faz a empresa vender.</p>
+        </div>
+        <div class="vd-par">
+          <p class="dor"><b>A dor:</b> “Equipe fixa pesa no caixa e freelancer some na hora da entrega.”</p>
+          <p class="sol"><b>A solução:</b> você paga só pela quantidade que pedir, com valor fechado antes do envio e <b>só depois de aprovar</b> o material.</p>
+        </div>
+      </article>
+
+      <article class="vd-card">
+        <div class="vd-ic"><svg viewBox="0 0 24 24"><path d="M12 3l7 7-9 9H3v-7z"/><path d="M14 5l5 5"/></svg></div>
+        <h3>Para quem é designer</h3>
+        <div class="vd-par">
+          <p class="dor"><b>A dor:</b> “Passo o dia em posts repetitivos e sobra pouco tempo para o trabalho criativo que vale mais.”</p>
+          <p class="sol"><b>A solução:</b> terceirize o volume com entrega em 24 horas e use seu tempo em identidade visual e projetos de maior valor.</p>
+        </div>
+        <div class="vd-par">
+          <p class="dor"><b>A dor:</b> “O cliente pede 20 posts para ontem e a agenda não comporta.”</p>
+          <p class="sol"><b>A solução:</b> use o Campanha Pronta como retaguarda nos picos de demanda e não precisa mais recusar trabalho.</p>
+        </div>
+      </article>
+
+      <article class="vd-card">
+        <div class="vd-ic"><svg viewBox="0 0 24 24"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/></svg></div>
+        <h3>Para quem é gerente de marketing</h3>
+        <div class="vd-par">
+          <p class="dor"><b>A dor:</b> “O calendário de conteúdo está atrasado e a campanha já tem data para ir ao ar.”</p>
+          <p class="sol"><b>A solução:</b> até 30 posts em 24 horas. Você fecha o conteúdo do mês em um dia e recupera o cronograma.</p>
+        </div>
+        <div class="vd-par">
+          <p class="dor"><b>A dor:</b> “Aprovar orçamento com a diretoria é demorado e imprevisível.”</p>
+          <p class="sol"><b>A solução:</b> o valor aparece na hora, antes de enviar o pedido, e o pagamento só acontece após a aprovação. Fica fácil de justificar internamente.</p>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- 3. COMPARAÇÃO -->
+  <section>
+    <h2>Fazer sozinho <span class="hl">ou ter tudo pronto amanhã?</span></h2>
+    <div class="vd-comp">
+      <div class="vd-card ruim">
+        <h3>Realidade de fazer sozinho</h3>
+        <ul class="vd-lista">
+          <li>Horas perdidas em editor de imagem</li>
+          <li>Ideia travada na hora de criar</li>
+          <li>Post de última hora, sem padrão visual</li>
+          <li>Perfil parado enquanto o prazo corre</li>
+          <li>Pagar adiantado e torcer para entregarem</li>
+        </ul>
+      </div>
+      <div class="vd-card bom">
+        <h3>Realidade do Campanha Pronta</h3>
+        <ul class="vd-lista">
+          <li>Até 30 posts prontos em 24 horas</li>
+          <li>Design nas cores da sua marca</li>
+          <li>Carrossel ou post estático, você escolhe</li>
+          <li>Você descreve cada post, se quiser</li>
+          <li>Pagamento só depois de aprovar</li>
+        </ul>
+      </div>
+    </div>
+    <a class="vd-cta" href="#form">Quero meus posts em 24 horas</a>
+  </section>
+
+  <!-- 4. COMO FUNCIONA -->
+  <section>
+    <h2>Simples assim, <span class="hl">em 3 passos</span></h2>
+    <div class="vd-passos">
+      <div class="vd-card"><div><h3>Preencha o formulário</h3><p>Informe o Instagram, a quantidade de posts, o tipo e o que você deseja em cada um.</p></div></div>
+      <div class="vd-card"><div><h3>Veja o valor e envie o pedido</h3><p>O orçamento aparece na hora, só com o que você escolheu. Sem surpresa.</p></div></div>
+      <div class="vd-card"><div><h3>Receba, aprove e só então pague</h3><p>O material chega no seu e-mail em até 24 horas. O pagamento só acontece depois da sua aprovação.</p></div></div>
+    </div>
+  </section>
+
+  <!-- 5. OFERTA / RISCO ZERO -->
+  <section>
+    <div class="vd-card vd-oferta">
+      <p class="script">Sem risco para você</p>
+      <h2>Você só paga <span class="hl">depois de aprovar.</span></h2>
+      <ul class="vd-lista bom">
+        <li>Parcele em até 12x no cartão</li>
+        <li>Pagamento à vista com 5% de desconto</li>
+        <li>Valor calculado na hora, antes de enviar</li>
+        <li>Entrega por e-mail em até 24 horas</li>
+      </ul>
+      <div><a class="vd-cta" href="#form">Gerar meu orçamento agora</a></div>
+    </div>
+  </section>
+
+  <!-- =====================================================================
+  BLOCOS EXTRAS DE VENDAS – Campanha Pronta
+  COMO USAR:
+  1) Cole o <style> abaixo logo depois do <style> do bloco de vendas (ou no mesmo <style>).
+  2) Cole cada <section> DENTRO do <div class="vd"> do bloco de vendas, na posição desejada.
+  3) Cada <script> fica logo depois da sua <section> (são independentes).
+===================================================================== -->
+
+<style>
+/* ---------- GALERIA ---------- */
+.vg-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:22px 0 30px}
+.vg-item,.vg-slide{position:relative;aspect-ratio:1;border-radius:14px;overflow:hidden;border:1px solid var(--c2);
+  background:linear-gradient(135deg,#34353b,#1c1d20);display:grid;place-items:center;color:var(--s);font-size:.78rem;font-weight:600}
+.vg-item img,.vg-slide img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.vg-item{transition:border-color .2s,box-shadow .2s}
+.vg-item:hover{border-color:var(--a);box-shadow:0 0 18px rgba(255,179,0,.35)}
+.vg-car{position:relative}
+.vg-track{position:relative;display:flex;gap:10px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;padding:2px}
+.vg-track::-webkit-scrollbar{display:none}
+.vg-slide{flex:0 0 78%;scroll-snap-align:center}
+.vg-nav{display:flex;align-items:center;justify-content:center;gap:14px;margin-top:14px}
+.vg-nav button{width:38px;height:38px;border-radius:50%;border:0;cursor:pointer;font-size:1.1rem;font-weight:800;color:#150a00;background:linear-gradient(135deg,var(--a),var(--o))}
+.vg-nav button:focus-visible{outline:3px solid #fff;outline-offset:2px}
+.vg-dots{display:flex;gap:7px}
+.vg-dots i{width:9px;height:9px;border-radius:50%;background:var(--c2);transition:.2s}
+.vg-dots i.on{background:var(--a);width:22px;border-radius:5px}
+
+/* ---------- LINHA DO TEMPO ---------- */
+.vt{position:relative;text-align:left;margin:26px 0 0;user-select:none}
+.vt ol{list-style:none;margin:0;padding:0}
+.vt-rail{position:absolute;left:18px;width:4px;border-radius:2px;background:var(--c2);z-index:0}
+.vt-fill{position:absolute;left:0;top:0;width:100%;border-radius:2px;background:linear-gradient(180deg,var(--a),var(--o));box-shadow:0 0 12px rgba(255,106,0,.6)}
+.vt-step{position:relative;padding:0 0 22px 64px;min-height:104px}
+.vt-step:last-child{min-height:0;padding-bottom:0}
+.vt-n{position:absolute;left:0;top:0;width:40px;height:40px;border-radius:50%;display:grid;place-items:center;z-index:1;
+  font-weight:800;background:#1c1d20;border:2px solid var(--c2);color:var(--s);transition:.3s;cursor:pointer;padding:0;font-family:inherit;font-size:1rem}
+.vt-step.opc .vt-n{border-style:dashed}
+.vt-step.on .vt-n{background:linear-gradient(135deg,var(--a),var(--o));border-color:transparent;color:#150a00}
+.vt-step.cur .vt-n{box-shadow:0 0 0 5px rgba(255,106,0,.28),0 0 22px rgba(255,106,0,.55)}
+.vt-step h3{padding-top:9px;font-size:1.02rem;color:var(--s);transition:color .3s}
+.vt-step.on h3{color:#fff}
+.vt-b{opacity:0;transform:translateY(8px);transition:opacity .35s,transform .35s;margin-top:6px}
+.vt-step.on .vt-b{opacity:1;transform:none}
+.vt-b p{margin:0;color:var(--s);font-size:.92rem}
+.vt-tag{display:inline-block;margin-top:8px;padding:4px 12px;border-radius:999px;font-size:.78rem;font-weight:700;color:#150a00;background:linear-gradient(90deg,var(--a),var(--o))}
+.vt-k{position:absolute;left:5px;width:30px;height:30px;margin-top:-15px;border-radius:50%;z-index:3;cursor:grab;touch-action:none;
+  background:radial-gradient(circle at 35% 30%,#fff,var(--a) 55%,var(--o));box-shadow:0 0 0 4px rgba(11,11,12,.8),0 0 24px rgba(255,179,0,.9)}
+.vt-k:active{cursor:grabbing}
+.vt-k:focus-visible{outline:3px solid #fff;outline-offset:4px}
+.vt-k.snap,.vt-fill.snap{transition:top .28s ease,height .28s ease}
+.vt-k.dica{animation:vtp 1.6s ease-out infinite}
+@keyframes vtp{0%{box-shadow:0 0 0 4px rgba(11,11,12,.8),0 0 0 4px rgba(255,179,0,.7)}100%{box-shadow:0 0 0 4px rgba(11,11,12,.8),0 0 0 22px rgba(255,179,0,0)}}
+.vt-dica{position:absolute;left:48px;font-size:.8rem;font-weight:700;color:var(--a);margin-top:-12px;z-index:3;pointer-events:none;white-space:nowrap;
+  background:rgba(11,11,12,.85);padding:4px 10px;border-radius:999px;border:1px solid rgba(255,179,0,.4)}
+@media (prefers-reduced-motion:reduce){.vt-k.dica{animation:none}}
+
+/* ---------- PIRÂMIDE DE PREÇO ---------- */
+.vp{text-align:left}
+.vp-head{position:sticky;top:8px;z-index:5;margin:22px 0 14px;padding:12px 14px;border-radius:16px;
+  background:rgba(11,11,12,.93);border:1px solid rgba(255,179,0,.3);backdrop-filter:blur(6px);box-shadow:0 8px 24px rgba(0,0,0,.5)}
+.vp-sw{display:flex;align-items:center;justify-content:center;gap:12px;font-weight:700;font-size:.92rem}
+.vp-sw span{color:var(--s);transition:color .2s}
+.vp-sw span.on{color:#fff}
+.vp-sw button{position:relative;width:58px;height:30px;border-radius:15px;border:0;cursor:pointer;background:var(--c2);transition:background .25s;flex:none}
+.vp-sw button[aria-checked=true]{background:linear-gradient(90deg,var(--a),var(--o))}
+.vp-sw button i{position:absolute;top:3px;left:3px;width:24px;height:24px;border-radius:50%;background:#fff;transition:transform .25s}
+.vp-sw button[aria-checked=true] i{transform:translateX(28px)}
+.vp-sw button:focus-visible{outline:3px solid #fff;outline-offset:3px}
+.vp-read{margin-top:10px;text-align:center;font-size:.92rem;color:var(--s);min-height:2.7em;display:grid;place-items:center}
+.vp-read b{color:#fff}
+.vp-fun{padding:0 2px}
+.vp-row{display:flex;align-items:center;gap:8px;margin-bottom:2px;position:relative;cursor:pointer}
+.vp-q{flex:none;width:30px;text-align:right;font-size:.72rem;font-weight:700;color:var(--s);transition:color .15s}
+.vp-w{flex:1;transition:filter .15s}
+.vp-s{height:25px;display:grid;place-items:center;font-size:.72rem;font-weight:800;color:#150a00;white-space:nowrap}
+.vp-row:hover,.vp-row.on{z-index:2}
+.vp-row:hover .vp-w,.vp-row.on .vp-w{filter:brightness(1.18) drop-shadow(0 0 9px rgba(255,200,60,.9))}
+.vp-row:hover .vp-q,.vp-row.on .vp-q{color:var(--a)}
+.vp-nota{margin:16px 0 22px;text-align:center;font-size:.9rem;color:var(--s)}
+.vp-nota b{color:var(--a)}
+</style>
+
+
+<!-- ===================== ITEM 1 · GALERIA DE EXEMPLOS ===================== -->
+<section>
+  <h2>Veja como ficam <span class="hl">os seus posts</span></h2>
+  <p class="sub">Exemplos de posts estáticos e de carrosséis feitos no Campanha Pronta.</p>
+
+  <div class="vg-grid" id="vgGrid"></div>
+
+  <p class="script">Deslize para ver um carrossel</p>
+  <div class="vg-car">
+    <div class="vg-track" id="vgTrack"></div>
+    <div class="vg-nav">
+      <button type="button" id="vgPrev" aria-label="Slide anterior">‹</button>
+      <div class="vg-dots" id="vgDots"></div>
+      <button type="button" id="vgNext" aria-label="Próximo slide">›</button>
+    </div>
+  </div>
+  <p class="nota">Cada pedido é feito com as cores e o estilo que você escolher.</p>
+</section>
+<script>
+(function(){
+  /* ==== NOMES DAS IMAGENS (suba estes arquivos na pasta "exemplos" do GitHub) ====
+     Tamanho sugerido: 1080 x 1080 px (quadrado), JPG ou PNG.
+     PASTA: caminho da pasta. Pode ser relativo ('exemplos/') ou a URL completa, ex.:
+            'https://SEU-USUARIO.github.io/SEU-REPOSITORIO/exemplos/'                      */
+  const PASTA = 'exemplos/';
+  const ESTATICOS = ['post-01.jpg','post-02.jpg','post-03.jpg','post-04.jpg','post-05.jpg','post-06.jpg'];
+  const CARROSSEL = ['carrossel-slide-1.jpg','carrossel-slide-2.jpg','carrossel-slide-3.jpg','carrossel-slide-4.jpg','carrossel-slide-5.jpg'];
+
+  function tile(cls,file,label){
+    const d=document.createElement('div'); d.className=cls;
+    d.innerHTML='<span>'+label+'</span>';               // aparece enquanto a imagem não existe
+    const im=new Image(); im.alt='Exemplo: '+label; im.loading='lazy';
+    im.onerror=()=>im.remove(); im.src=PASTA+file; d.appendChild(im);
+    return d;
+  }
+  const grid=document.getElementById('vgGrid'), track=document.getElementById('vgTrack'), dots=document.getElementById('vgDots');
+  ESTATICOS.forEach((f,i)=>grid.appendChild(tile('vg-item',f,'Post '+String(i+1).padStart(2,'0'))));
+  CARROSSEL.forEach((f,i)=>{track.appendChild(tile('vg-slide',f,'Carrossel · slide '+(i+1))); dots.appendChild(document.createElement('i'));});
+
+  const slides=[...track.children], pts=[...dots.children];
+  const centro=i=>slides[i].offsetLeft-(track.clientWidth-slides[i].clientWidth)/2;
+  const atual=()=>{let m=0,d=1e9; slides.forEach((s,i)=>{const x=Math.abs(centro(i)-track.scrollLeft); if(x<d){d=x;m=i;}}); return m;};
+  const marca=()=>{const a=atual(); pts.forEach((p,i)=>p.classList.toggle('on',i===a));};
+  const vai=i=>track.scrollTo({left:centro(Math.max(0,Math.min(slides.length-1,i))),behavior:'smooth'});
+  track.addEventListener('scroll',marca,{passive:true});
+  document.getElementById('vgPrev').onclick=()=>vai(atual()-1);
+  document.getElementById('vgNext').onclick=()=>vai(atual()+1);
+  marca();
+})();
+</script>
+
+
+<!-- ===================== ITEM 3 · LINHA DO TEMPO INTERATIVA ===================== -->
+<section>
+  <h2>Do pedido ao material completo, <span class="hl">passo a passo</span></h2>
+  <p class="sub">Arraste a bolinha pela linha e veja o que acontece em cada etapa.</p>
+
+  <div class="vt" id="vt">
+    <div class="vt-rail" id="vtRail"><div class="vt-fill" id="vtFill"></div></div>
+    <ol id="vtList">
+      <li class="vt-step"><button type="button" class="vt-n" aria-label="Ir para a etapa 1">1</button><h3>Pedido enviado</h3><div class="vt-b"><p>Você preenche o formulário, confere o valor e clica em “Enviar pedido!”. O pedido chega até nós na hora, com tudo o que você escolheu: quantidade, tipo de post, cores e descrições.</p></div></li>
+      <li class="vt-step"><button type="button" class="vt-n" aria-label="Ir para a etapa 2">2</button><h3>Criação</h3><div class="vt-b"><p>Nossa equipe cria os seus posts a partir das informações do formulário, com as cores da sua marca e o estilo que você descreveu. Tudo isso dentro do prazo de 24 horas.</p></div></li>
+      <li class="vt-step"><button type="button" class="vt-n" aria-label="Ir para a etapa 3">3</button><h3>Envio do material pronto</h3><div class="vt-b"><p>Os posts chegam no e-mail informado no pedido, em até 24 horas. Se surgir alguma dúvida, entramos em contato pelo seu WhatsApp.</p></div></li>
+      <li class="vt-step"><button type="button" class="vt-n" aria-label="Ir para a etapa 4">4</button><h3>Revisão</h3><div class="vt-b"><p>Agora é a sua vez: confira os posts com calma e veja se está tudo como você imaginou. Nenhum pagamento é pedido nesta etapa.</p></div></li>
+      <li class="vt-step opc"><button type="button" class="vt-n" aria-label="Ir para a etapa 5">5</button><h3>Alterações (se necessário)</h3><div class="vt-b"><p>Se algo precisar mudar, é só nos dizer o que deseja ajustar. Se estiver tudo certo, essa etapa é pulada.</p></div></li>
+      <li class="vt-step opc"><button type="button" class="vt-n" aria-label="Ir para a etapa 6">6</button><h3>Reenvio</h3><div class="vt-b"><p>Com os ajustes feitos, enviamos o material atualizado para a sua nova avaliação.</p></div></li>
+      <li class="vt-step"><button type="button" class="vt-n" aria-label="Ir para a etapa 7">7</button><h3>Pagamento e envio do material completo em alta qualidade</h3><div class="vt-b"><p>Com o material aprovado, você faz o pagamento: parcelado em até 12x no cartão ou à vista com 5% de desconto. Em seguida, enviamos o material completo em alta qualidade, pronto para postar.</p><span class="vt-tag">Só aqui você paga</span></div></li>
+    </ol>
+    <span class="vt-dica" id="vtDica">Arraste</span>
+    <div class="vt-k dica" id="vtK" role="slider" tabindex="0" aria-label="Etapa do processo" aria-valuemin="1" aria-valuemax="7" aria-valuenow="1"></div>
+  </div>
+</section>
+<script>
+(function(){
+  const box=document.getElementById('vt'), steps=[...document.querySelectorAll('#vtList .vt-step')],
+        knob=document.getElementById('vtK'), fill=document.getElementById('vtFill'),
+        rail=document.getElementById('vtRail'), dica=document.getElementById('vtDica');
+  let c=[], cur=0, y=0, tocou=false;
+
+  const medir=()=>{ c=steps.map(li=>li.offsetTop+20); rail.style.top=c[0]+'px'; rail.style.height=(c[c.length-1]-c[0])+'px'; };
+  function pinta(py){
+    y=Math.max(c[0],Math.min(c[c.length-1],py));
+    knob.style.top=y+'px'; fill.style.height=(y-c[0])+'px'; dica.style.top=y+'px';
+    let n=0; c.forEach((v,i)=>{ if(v<=y+1) n=i+1; });
+    n=Math.max(n,1); cur=n-1;
+    steps.forEach((li,i)=>{ li.classList.toggle('on',i<n); li.classList.toggle('cur',i===cur); });
+    knob.setAttribute('aria-valuenow',n); knob.setAttribute('aria-valuetext',steps[cur].querySelector('h3').textContent);
+  }
+  function vai(i,anima){ i=Math.max(0,Math.min(steps.length-1,i)); knob.classList.toggle('snap',!!anima); fill.classList.toggle('snap',!!anima); pinta(c[i]); }
+  function primeiro(){ if(tocou) return; tocou=true; knob.classList.remove('dica'); dica.remove(); }
+
+  knob.addEventListener('pointerdown',e=>{
+    primeiro(); knob.setPointerCapture(e.pointerId); knob.classList.remove('snap'); fill.classList.remove('snap'); e.preventDefault();
+    const mv=ev=>pinta(ev.clientY-box.getBoundingClientRect().top);
+    const up=()=>{ knob.removeEventListener('pointermove',mv); knob.removeEventListener('pointerup',up); knob.removeEventListener('pointercancel',up);
+      let m=0,d=1e9; c.forEach((v,i)=>{ if(Math.abs(v-y)<d){d=Math.abs(v-y); m=i;} }); vai(m,true); };
+    knob.addEventListener('pointermove',mv); knob.addEventListener('pointerup',up); knob.addEventListener('pointercancel',up);
+  });
+  knob.addEventListener('keydown',e=>{
+    const k=e.key; if(['ArrowDown','ArrowRight','ArrowUp','ArrowLeft','Home','End'].indexOf(k)<0) return;
+    e.preventDefault(); primeiro();
+    vai(k==='Home'?0:k==='End'?steps.length-1:(k==='ArrowDown'||k==='ArrowRight')?cur+1:cur-1,true);
+  });
+  steps.forEach((li,i)=>li.querySelector('.vt-n').addEventListener('click',()=>{ primeiro(); vai(i,true); }));
+
+  const refaz=()=>{ medir(); vai(cur,false); };
+  if('ResizeObserver' in window) new ResizeObserver(refaz).observe(box); else window.addEventListener('resize',refaz);
+  window.addEventListener('load',refaz); refaz();
+})();
+</script>
+
+
+<!-- ===================== ITEM 4 · PIRÂMIDE DE PREÇO POR POST ===================== -->
+<section>
+  <h2>Quanto custa <span class="hl">cada post?</span></h2>
+  <p class="sub">Quanto mais posts você pede, menos paga por cada um. Passe o mouse (ou toque) em uma seção para ver o valor.</p>
+
+  <div class="vp">
+    <div class="vp-head">
+      <div class="vp-sw">
+        <span id="vpL" class="on">Post estático</span>
+        <button type="button" id="vpT" role="switch" aria-checked="false" aria-label="Alternar entre post estático e post carrossel"><i></i></button>
+        <span id="vpR">Post carrossel</span>
+      </div>
+      <div class="vp-read" id="vpRead" aria-live="polite">Passe o mouse ou toque em uma seção da pirâmide.</div>
+    </div>
+    <div class="vp-fun" id="vpFun" role="list"></div>
+    <p class="vp-nota" id="vpNota"></p>
+  </div>
+  <a class="vd-cta" href="#form">Gerar meu orçamento</a>
+</section>
+<script>
+(function(){
+  const PE=[50,98,144,188,230,270,308,344,378,410,440,468,494,520,546,572,598,624,650,678,708,738,768,800,832,864,896,928,960,990];
+  const PC=[100,196,288,376,460,540,616,688,756,820,878,932,982,1028,1070,1108,1144,1178,1210,1240,1268,1296,1324,1352,1380,1408,1432,1454,1474,1490];
+  const brl=v=>v.toLocaleString('pt-BR',{style:'currency',currency:'BRL'});
+  const fun=document.getElementById('vpFun'), sw=document.getElementById('vpT'), read=document.getElementById('vpRead'), nota=document.getElementById('vpNota');
+  const N=30, topo=1, base=.30;               // largura do topo e da ponta (proporção)
+  let car=false, sel=-1;
+  const rows=[], shapes=[];
+
+  for(let i=0;i<N;i++){
+    const r1=topo-(topo-base)*(i/N), r2=topo-(topo-base)*((i+1)/N), x1=(1-r1)/2*100, x2=(1-r2)/2*100;
+    const row=document.createElement('div'); row.className='vp-row'; row.setAttribute('role','listitem');
+    row.innerHTML='<span class="vp-q">'+(i+1)+'</span><div class="vp-w"><div class="vp-s" style="clip-path:polygon('+x1+'% 0,'+(100-x1)+'% 0,'+(100-x2)+'% 100%,'+x2+'% 100%)"></div></div>';
+    row.addEventListener('mouseenter',()=>mostra(i)); row.addEventListener('click',()=>{ rows.forEach(x=>x.classList.remove('on')); row.classList.add('on'); mostra(i); });
+    fun.appendChild(row); rows.push(row); shapes.push(row.querySelector('.vp-s'));
+  }
+  const tab=()=>car?PC:PE, por=i=>tab()[i]/(i+1);
+
+  function mostra(i){
+    sel=i; const q=i+1;
+    read.innerHTML='<span><b>'+q+(q===1?' post ':' posts ')+(car?'carrossel':'estáticos')+'</b> · <b>'+brl(por(i))+'</b> por post · total '+brl(tab()[i])+'</span>';
+  }
+  function pinta(){
+    const h1=car?28:42, h2=car?10:22;
+    shapes.forEach((s,i)=>{ s.style.background='hsl('+(h1+(h2-h1)*i/(N-1))+',100%,52%)'; s.textContent=brl(por(i)); });
+    rows.forEach((r,i)=>r.setAttribute('aria-label',(i+1)+(i?' posts: ':' post: ')+brl(por(i))+' por post'));
+    const a=por(0), b=por(N-1), pct=Math.round((1-b/a)*100);
+    nota.innerHTML='Do 1º ao 30º post, o valor de cada '+(car?'carrossel':'post estático')+' cai de <b>'+brl(a)+'</b> para <b>'+brl(b)+'</b> (<b>'+pct+'% menos</b>).';
+    document.getElementById('vpL').classList.toggle('on',!car); document.getElementById('vpR').classList.toggle('on',car);
+    if(sel>=0) mostra(sel);
+  }
+  sw.addEventListener('click',()=>{ car=!car; sw.setAttribute('aria-checked',car); pinta(); });
+  pinta();
+})();
+</script>
+
+  <!-- 6. PERGUNTAS FREQUENTES -->
+  <section>
+    <h2>Perguntas <span class="hl">frequentes</span></h2>
+    <details><summary>Preciso pagar antes de receber?</summary><p>Não. O pagamento é somente depois de você receber e aprovar o material todo pronto.</p></details>
+    <details><summary>Posso escolher o que vai em cada post?</summary><p>Pode. No formulário você escolhe entre descrever cada post ou passar o estilo e as informações gerais, e a gente cuida do resto.</p></details>
+    <details><summary>Como sei quanto vai custar?</summary><p>Ao clicar em “Gerar orçamento”, o valor aparece na hora, de acordo com a quantidade de posts e o tipo (carrossel ou estático). Só então você decide se envia o pedido.</p></details>
+    <details><summary>Como funciona o pagamento?</summary><p>Você pode parcelar em até 12x no cartão ou pagar à vista com 5% de desconto, sempre depois de aprovar o material.</p></details>
+    <details><summary>Como recebo o material?</summary><p>Por e-mail, no endereço que você informar no formulário. O WhatsApp serve para contato em caso de dúvidas.</p></details>
+  </section>
+
+  <!-- 7. CHAMADA FINAL (leva ao formulário) -->
+  <section style="margin-bottom:26px">
+    <h2>Pronto para tirar o prazo <span class="hl">das suas costas?</span></h2>
+    <p class="script">Preencha o formulário abaixo e veja seu orçamento na hora.</p>
+    <svg class="vd-seta" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v16M5 13l7 7 7-7"/></svg>
+  </section>
+
+</div>
+<!-- ===== FIM DO BLOCO DE VENDAS ===== -->
   </header>
   
 <section class="card intro" id="intro">
